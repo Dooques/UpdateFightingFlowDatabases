@@ -1,5 +1,5 @@
-val kotlin_version: String by project
-val logback_version: String by project
+val kotlinVersion: String by project
+val logbackVersion: String by project
 
 plugins {
     kotlin("jvm") version "2.2.21"
@@ -29,7 +29,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:0.59.0")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.59.0")
     implementation("com.h2database:h2:2.3.232")
-    implementation("ch.qos.logback:logback-classic:${logback_version}")
+    implementation("ch.qos.logback:logback-classic:${logbackVersion}")
     testImplementation("io.ktor:ktor-server-test-host")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 }
