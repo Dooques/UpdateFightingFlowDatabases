@@ -2,13 +2,20 @@ package com.dooques.fightingflow
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpTimeout
 import kotlinx.coroutines.runBlocking
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     runBlocking {
-        val client = HttpClient(CIO)
-        val backendUrl = "http://localhost:8080"
+        val client = HttpClient(CIO) {
+            install(HttpTimeout) {
+                requestTimeoutMillis = 120_000
+                connectTimeoutMillis = 20_000
+                socketTimeoutMillis = 120_000
+            }
+        }
+        val backendUrl = "http://host.docker.internal:8080"
 
         val runFighterUpdate = args.contains("--fighters")
         val runMoveUpdate = args.contains("--moves")

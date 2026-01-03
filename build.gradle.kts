@@ -1,5 +1,5 @@
-val kotlinVersion: String by project
-val logbackVersion: String by project
+val kotlinVersion = "2.1.0"
+val logbackVersion = "1.5.16"
 
 plugins {
     kotlin("jvm") version "2.2.21"
