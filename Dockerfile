@@ -8,7 +8,7 @@ RUN gradle clean build
 # STAGE 2 - Create the runtime image
 FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/build/libs/* app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 

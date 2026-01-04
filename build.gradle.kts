@@ -15,6 +15,10 @@ kotlin {
 group = "com.dooques.fightingflow"
 version = "0.0.1"
 
+tasks.jar {
+    archiveBaseName.set("app")
+}
+
 application {
     mainClass = "com.dooques.fightingflow.ApplicationKt"
 }
