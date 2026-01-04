@@ -1,3 +1,4 @@
+
 val kotlinVersion = "2.1.0"
 val logbackVersion = "1.5.16"
 
@@ -5,7 +6,6 @@ plugins {
     kotlin("jvm") version "2.2.21"
     id("io.ktor.plugin") version "3.3.2"
     kotlin("plugin.serialization") version "2.2.21"
-
 }
 
 kotlin {
@@ -20,7 +20,7 @@ tasks.jar {
 }
 
 application {
-    mainClass = "com.dooques.fightingflow.ApplicationKt"
+    mainClass.set("com.dooques.fightingflow.ApplicationKt")
 }
 
 dependencies {

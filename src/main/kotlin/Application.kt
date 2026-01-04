@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
             install(HttpTimeout) {
                 requestTimeoutMillis = 120_000
                 connectTimeoutMillis = 20_000
-                socketTimeoutMillis = 120_000
+                socketTimeoutMillis = 20_000
             }
         }
         val backendUrl = "http://host.docker.internal:8080"
