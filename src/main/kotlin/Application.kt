@@ -7,6 +7,7 @@ import kotlinx.coroutines.runBlocking
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
+    println("Starting Update App")
     runBlocking {
         val client = HttpClient(CIO) {
             install(HttpTimeout) {
@@ -16,11 +17,12 @@ fun main(args: Array<String>) {
             }
         }
         val backendUrl = "http://host.docker.internal:8080"
+        println("Client created, connecting to backend at: $backendUrl")
 
         val runFighterUpdate = args.contains("--fighters")
         val runMoveUpdate = args.contains("--moves")
 
-
+        println("Running update for: Fighters: $runFighterUpdate, Moves: $runMoveUpdate")
         if (runFighterUpdate) {
             try {
                 println("Updating fighters...")
@@ -38,6 +40,7 @@ fun main(args: Array<String>) {
                 println("Failed to update moves: ${e.message}")
             }
         }
+        println(" Database Update Finished.")
         client.close()
     }
     exitProcess(0)

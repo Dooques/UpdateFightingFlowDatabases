@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.gradle.kotlin.dsl.withType
 
 val kotlinVersion = "2.1.0"
 val logbackVersion = "1.5.16"
@@ -14,10 +16,6 @@ kotlin {
 
 group = "com.dooques.fightingflow"
 version = "0.0.1"
-
-tasks.jar {
-    archiveBaseName.set("app")
-}
 
 application {
     mainClass.set("com.dooques.fightingflow.ApplicationKt")
@@ -36,4 +34,11 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:${logbackVersion}")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+}
+
+tasks.withType<ShadowJar> {
+    manifest {
+        attributes["Main-Class"] = application.mainClass
+    }
+    archiveFileName.set("app.jar")
 }
